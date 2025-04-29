@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login — Elegance Perfume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page-body"> <!-- Add class for potential body styling -->
+
+    <div class="login-container">
+        <div class="login-logo">
+             <a href="index.html" class="logo">Elegance Perfume</a>
+             <span>Admin Access</span>
+        </div>
+        <h2 class="login-title">Admin Login</h2>
+        <form id="login-form" class="login-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+            </div>
+            <div id="error-message" class="error-message" style="display: none;">
+                <!-- Error message displayed by JS -->
+            </div>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+         <p class="login-note">Note: This is a basic demonstration login.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

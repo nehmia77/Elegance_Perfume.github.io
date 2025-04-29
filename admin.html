@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Elegance Perfume</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to the updated stylesheet -->
+</head>
+<body>
+
+    <header class="admin-header">
+        <div class="admin-header-container">
+            <a href="index.html" class="logo">Elegance Perfume</a> <!-- Link logo back -->
+            <span class="admin-title-badge">Admin Panel</span>
+            <nav class="admin-nav">
+                <a href="index.html" class="admin-nav-link">View Main Site</a>
+                <a href="admin.html" class="admin-nav-link active">Products</a>
+                <!-- <a href="#orders" class="admin-nav-link">Orders</a> -->
+            </nav>
+            <!-- Added Logout Button -->
+            <button id="logout-button">Logout</button>
+        </div>
+    </header>
+
+<main class="admin-main-content">
+    <section class="admin-section add-product-section">
+        <h2 class="admin-section-title">Add New Product</h2>
+        <form id="add-product-form" class="admin-form">
+            <div class="form-group">
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" name="productName" required placeholder="e.g., Dior Sauvage Elixir">
+            </div>
+            <div class="form-group">
+                <label for="product-image">Image File Name:</label>
+                <input type="text" id="product-image" name="productImage" required placeholder="e.g., dior-sauvage-elixir.jpg (must be in images/ folder)">
+                <small>Enter the filename (like 'perfume.jpg'). Ensure the image is uploaded to the 'images/' folder.</small>
+            </div>
+            <div class="form-group">
+                <label for="product-price">Price (ETB):</label>
+                <input type="number" id="product-price" name="productPrice" required min="0" step="0.01" placeholder="e.g., 20670">
+            </div>
+            <div class="form-group">
+                <label for="product-category">Category:</label>
+                <select id="product-category" name="productCategory" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="Men">Men's Perfumes</option>
+                    <option value="Women">Women's Perfumes</option>
+                    <option value="Unisex">Unisex Perfumes</option>
+                    <option value="Luxury">Luxury Perfumes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="product-quantity">Quantity Available:</label>
+                <input type="number" id="product-quantity" name="productQuantity" required min="0" placeholder="e.g., 10">
+            </div>
+            <button type="submit" class="admin-button add-button">Add Product to Store</button>
+        </form>
+    </section>
+
+    <section class="admin-section manage-product-section">
+        <h2 class="admin-section-title">Manage Existing Products</h2>
+        <div class="admin-table-container">
+            <table class="admin-product-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price (ETB)</th>
+                        <th>Quantity</th>
+                        <th>Category</th>
+                        <th>Image Path</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="product-management-table-body">
+                    <!-- Products will be dynamically loaded here by script.js -->
+                    <tr>
+                        <td colspan="6">Loading products...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer class="admin-footer">
+    <p>Elegance Perfume Admin Panel © 2025</p>
+</footer>
+
+<!-- Link to the updated script file -->
+<script src="script.js"></script>
+
+</body>
+</html>

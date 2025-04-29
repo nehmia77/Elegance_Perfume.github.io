@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment — Elegance Perfume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="logo">Elegance Perfume</a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+      <a href="cart.html">Cart <span class="cart-count"></span></a> <!-- Will show count before clearing -->
+      <a href="admin.html">Admin</a> <!-- Added Admin Link -->
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="page-wrapper payment-section"> <!-- Applied page-wrapper -->
+    <h2 class="page-title payment-title">Complete Your Payment</h2> <!-- Use page-title -->
+    <p style="text-align: center; color: var(--text-medium); margin-bottom: 2rem;">
+        Select your preferred payment method below.
+    </p>
+    <div class="payment-methods">
+      <div class="payment-method" data-method="Telebirr">Telebirr</div>
+      <div class="payment-method" data-method="CBE Birr">CBE Birr</div>
+      <div class="payment-method" data-method="M-PESA Ethiopia">M-PESA Ethiopia</div>
+    </div>
+
+    <div class="payment-forms">
+      <!-- Telebirr -->
+      <form class="payment-form" data-method="Telebirr">
+        <h3>Pay with Telebirr</h3>
+        <label for="telebirr-phone">Phone Number (Linked to Telebirr)</label>
+        <input type="tel" id="telebirr-phone" name="telebirrPhone" required pattern="^09\d{8}$" placeholder="e.g., 0912345678" inputmode="tel">
+        <label for="telebirr-name">Account Holder Name</label>
+        <input type="text" id="telebirr-name" name="telebirrName" required placeholder="Full Name as on account">
+        <!-- Add note about payment process if needed -->
+        <p style="font-size: 0.9em; color: var(--text-medium); margin-bottom: 1rem;">You will receive a payment request on your phone.</p>
+        <button type="submit" class="pay-btn">Confirm Telebirr Payment</button>
+      </form>
+
+      <!-- CBE Birr -->
+      <form class="payment-form" data-method="CBE Birr">
+         <h3>Pay with CBE Birr</h3>
+        <label for="cbe-phone">Phone Number (Linked to CBE Birr)</label>
+        <input type="tel" id="cbe-phone" name="cbePhone" required pattern="^09\d{8}$" placeholder="e.g., 0912345678" inputmode="tel">
+        <label for="cbe-id">Your CBE Birr ID / Short Code (Optional)</label>
+        <input type="text" id="cbe-id" name="cbeId" placeholder="If applicable">
+         <!-- Add note about payment process if needed -->
+         <p style="font-size: 0.9em; color: var(--text-medium); margin-bottom: 1rem;">Follow the instructions sent via SMS or app.</p>
+        <button type="submit" class="pay-btn">Confirm CBE Birr Payment</button>
+      </form>
+
+      <!-- MPESA -->
+      <form class="payment-form" data-method="M-PESA Ethiopia">
+         <h3>Pay with M-PESA Ethiopia</h3>
+        <label for="mpesa-phone">Phone Number (Linked to M-PESA)</label>
+        <input type="tel" id="mpesa-phone" name="mpesaPhone" required pattern="^07\d{8}$" placeholder="e.g., 07xxxxxxxx (Safaricom number)" inputmode="tel">
+        <label for="mpesa-name">Account Holder Name</label>
+        <input type="text" id="mpesa-name" name="mpesaName" required placeholder="Full Name as on M-PESA">
+         <!-- Add note about payment process if needed -->
+         <p style="font-size: 0.9em; color: var(--text-medium); margin-bottom: 1rem;">Enter your M-PESA PIN when prompted on your phone.</p>
+        <button type="submit" class="pay-btn">Confirm M-PESA Payment</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <div class="footer-title">Pages</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="cart.html">Cart</a>
+        <a href="admin.html">Admin</a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <div class="footer-title">Follow Us</div>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/login" target="_blank" rel="noopener noreferrer" class="footer-social" title="Facebook">
+          <img src="images/icons/facebook.png" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com/accounts/login" target="_blank" rel="noopener noreferrer" class="footer-social" title="Instagram">
+          <img src="images/icons/instagram.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer" class="footer-social" title="Twitter">
+          <img src="images/icons/twitter.png" alt="Twitter" class="social-icon">
+        </a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <div class="footer-title">Contact</div>
+      <div class="footer-contact">
+        Phone: <a href="tel:0968687876">0968687876</a><br>
+        Phone: <a href="tel:0978789090">0978789090</a><br>
+        Email: <a href="mailto:support@eleganceperfume.com">support@eleganceperfume.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Elegance Perfume © 2025. All rights reserved.
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
