@@ -272,13 +272,13 @@ header:not(.admin-header) {
     to { opacity: 1; transform: translateY(0); }
 }
 .hero h1 {
-    color: var(--text-dark-primary); /* Dark heading */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle shadow */
+    color: rgb(245,245,245); /* Dark heading */
+    text-shadow: 1px 1px 2px rgb(245,245,245); /* Subtle shadow */
     margin-bottom: 1.5rem;
 }
 .hero p {
     margin-bottom: 2.5rem;
-    color: var(--text-dark-secondary); /* Dark secondary text */
+    color: rgb(245,245,245); /* Dark secondary text */
     font-size: 1.1rem;
     text-shadow: none;
 }
