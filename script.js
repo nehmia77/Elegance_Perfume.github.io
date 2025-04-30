@@ -109,56 +109,28 @@ function findProductById(productId) {
 
 
 /* ========== MOBILE NAVIGATION ========== */
-/* ========== MOBILE NAVIGATION ========== */
 function setupMobileNav() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
-    // --- Add these checks ---
-    if (!menuToggle) {
-        console.error("Mobile menu toggle button (.menu-toggle) not found!");
-        return; // Stop if button is missing
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+        });
+        // Close menu if clicking outside of it on mobile
+        document.addEventListener('click', (event) => {
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target) && navLinks.classList.contains('open')) {
+                navLinks.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) { // Adjust breakpoint if needed
+                navLinks.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
     }
-    if (!navLinks) {
-        console.error("Navigation links container (.nav-links) not found!");
-        return; // Stop if nav links container is missing
-    }
-    // --- End of checks ---
-
-
-    console.log("Setting up mobile nav listener."); // Add log to confirm setup
-
-    menuToggle.addEventListener('click', () => {
-        console.log("Menu toggle clicked!"); // Add log to confirm click registration
-
-        const isOpen = navLinks.classList.toggle('open'); // Toggle the class
-        menuToggle.setAttribute('aria-expanded', isOpen); // Update ARIA attribute
-
-        console.log("Nav links 'open' class toggled. Is open:", isOpen); // Log state change
-    });
-
-    // Close menu if clicking outside of it on mobile
-    document.addEventListener('click', (event) => {
-        // Check if the click is outside the nav links AND outside the toggle button
-        // AND if the nav links are currently open
-        if (navLinks.classList.contains('open') &&
-            !navLinks.contains(event.target) &&
-            !menuToggle.contains(event.target))
-        {
-            console.log("Clicked outside open menu. Closing."); // Log closing action
-            navLinks.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Close menu on window resize if screen becomes wide
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navLinks.classList.contains('open')) { // Ensure it only runs if open
-            console.log("Resized to wide screen. Closing menu."); // Log closing action
-            navLinks.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
-    });
 }
 
 
