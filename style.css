@@ -1117,3 +1117,340 @@ footer:not(.admin-footer) {
     outline: none;
     box-shadow: none;
 }
+/* ========== HR MANAGEMENT PAGE STYLES ========== */
+
+.hr-page-body {
+    background-color: var(--bg-light-secondary); /* Use light secondary theme bg */
+    color: var(--text-dark-primary); /* Ensure default text is dark */
+}
+
+.hr-header {
+    background-color: #101036; /* Dark blue from your example */
+    color: white;
+    padding: 15px 5%; /* Use percentage padding for responsiveness */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem; /* Space between items if they wrap */
+}
+.hr-header h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 1.8rem); /* Responsive size */
+    color: white;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2; /* Ensure consistent line height */
+}
+
+/* Shared Header Buttons Style (for HR & Procurement headers) */
+.header-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 0.5rem 1rem; /* Row and column gap */
+    align-items: center;
+}
+.header-btn {
+    color: #eee;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    font-size: 0.9rem;
+    font-weight: 500; /* Slightly bolder */
+    white-space: nowrap; /* Prevent button text wrapping */
+}
+.header-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly more visible hover */
+    text-decoration: none;
+    color: white;
+}
+.header-btn.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    font-weight: 600; /* Bold active */
+    color: white;
+}
+
+/* HR Section Styling */
+.hr-section {
+    padding: clamp(1.5rem, 3vw, 2rem); /* Responsive padding */
+    max-width: 1000px;
+    margin: 2rem auto;
+    background-color: var(--bg-light-primary); /* Use main light bg */
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium); /* Use theme shadow */
+    border: 1px solid var(--border-color);
+}
+.hr-section h2 {
+    color: var(--accent-primary); /* Use theme accent */
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.3rem, 4vw, 1.6rem); /* Responsive heading */
+    font-family: 'Playfair Display', serif;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.8rem;
+}
+
+/* HR Table Styling */
+.hr-table-container { /* Add container for overflow */
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+.hr-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Prevent squashing */
+}
+.hr-table th, .hr-table td {
+    border: 1px solid var(--border-color); /* Use theme border */
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+.hr-table th {
+    background-color: var(--bg-accent-subtle); /* Use theme subtle accent bg */
+    color: var(--text-dark-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.hr-table td {
+    color: var(--text-dark-secondary);
+    font-size: 0.95rem;
+}
+.hr-table button.remove-btn {
+    background-color: rgba(220, 53, 69, 0.1); /* Light red background */
+    color: #dc3545; /* Red text */
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+}
+.hr-table button.remove-btn:hover {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+/* HR Form Styling */
+.hr-form {
+    border: 1px solid var(--border-color);
+    padding: clamp(1rem, 3vw, 2rem); /* Responsive padding */
+    border-radius: 5px;
+    background-color: var(--bg-light-secondary); /* Use theme secondary light bg */
+    margin-bottom: 30px;
+}
+.hr-form .form-group {
+    margin-bottom: 1.5rem; /* Increased spacing */
+}
+.hr-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark-secondary);
+    font-size: 0.95rem;
+}
+.hr-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color); /* Use theme border */
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--text-dark-primary);
+    background-color: var(--bg-light-primary); /* White input background */
+}
+.hr-form .form-group input:focus {
+    border-color: var(--accent-primary); /* Use theme accent */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.15); /* Theme accent glow */
+}
+.hr-form button[type="submit"] {
+    background: var(--accent-gradient); /* Use theme gradient */
+    color: var(--text-light-primary); /* Light text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.hr-form button[type="submit"]:hover {
+    box-shadow: var(--button-hover-glow); /* Use theme glow */
+}
+
+/* ========== PROCUREMENT PAGE STYLES ========== */
+
+.procurement-page-body {
+    background-color: var(--bg-light-secondary);
+    color: var(--text-dark-primary);
+}
+
+.procurement-header {
+    background-color: #101036; /* Dark blue from your example */
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.procurement-header h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+}
+/* Procurement header uses the shared .header-buttons styles */
+
+/* Procurement Section Styling */
+.procurement-section {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    max-width: 1100px; /* Wider allowed width */
+    margin: 2rem auto;
+    background-color: var(--bg-light-primary);
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+.procurement-section h2 {
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.3rem, 4vw, 1.6rem);
+    font-family: 'Playfair Display', serif;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.8rem;
+}
+
+/* Procurement Table Styling */
+.procurement-table-container { /* Add container for overflow */
+     overflow-x: auto;
+     margin-bottom: 20px;
+}
+.procurement-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px; /* Min width for scroll */
+}
+.procurement-table th, .procurement-table td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 0.95rem;
+}
+.procurement-table th {
+    background-color: var(--bg-accent-subtle);
+    color: var(--text-dark-primary);
+    font-weight: 600;
+}
+.procurement-table td {
+    color: var(--text-dark-secondary);
+}
+/* Specific column styling if needed */
+.procurement-table td:nth-child(5) { /* Status Column */
+    font-weight: 500;
+}
+.procurement-table td:nth-child(5):contains("Pending") { color: #ffc107; } /* Example status colors */
+.procurement-table td:nth-child(5):contains("Approved") { color: #198754; }
+.procurement-table td:nth-child(5):contains("Delivered") { color: #0dcaf0; }
+
+
+/* Procurement Search/Filter Form Styling */
+.search-filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 1rem; /* Row and column gap */
+    align-items: flex-end;
+    border: 1px solid var(--border-color);
+    padding: clamp(1rem, 3vw, 1.5rem); /* Responsive padding */
+    border-radius: 5px;
+    background-color: var(--bg-light-secondary);
+    margin-bottom: 20px;
+}
+.search-filter-form .form-group {
+    flex: 1 1 200px; /* Allow flex grow/shrink, base width 200px */
+    margin-bottom: 0;
+}
+.search-filter-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark-secondary);
+    font-size: 0.9rem;
+}
+.search-filter-form input,
+.search-filter-form select { /* Style select too */
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--text-dark-primary);
+    background-color: var(--bg-light-primary);
+}
+.search-filter-form select {
+     appearance: none;
+     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236A11CB%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+     background-repeat: no-repeat;
+     background-position: right 0.8rem center;
+     background-size: 0.7em auto;
+     padding-right: 2.5rem;
+}
+.search-filter-form input:focus,
+.search-filter-form select:focus {
+   border-color: var(--accent-primary);
+   outline: none;
+   box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.15);
+}
+.search-filter-form button {
+    background: var(--accent-gradient); /* Use gradient for search button */
+    color: var(--text-light-primary);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    height: calc(2.5rem + 2px); /* Match input height approx (padding*2 + border*2) */
+    line-height: normal; /* Reset line height */
+    transition: var(--transition-medium);
+    font-weight: 600;
+    align-self: flex-end; /* Align with bottom of inputs */
+}
+.search-filter-form button:hover {
+    box-shadow: var(--button-hover-glow);
+}
+
+/* Responsive Adjustments for HR/Procurement */
+@media (max-width: 768px) {
+    .hr-header, .procurement-header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .hr-section, .procurement-section {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hr-table, .procurement-table {
+         min-width: 0; /* Allow table to shrink more, rely on container scroll */
+    }
+    .search-filter-form {
+        flex-direction: column;
+        align-items: stretch; /* Stretch items full width */
+    }
+    .search-filter-form .form-group {
+        min-width: 0; /* Remove min-width */
+    }
+     .search-filter-form button {
+         width: 100%; /* Full width button */
+         height: auto; /* Reset height */
+         padding: 12px 20px;
+     }
+}
