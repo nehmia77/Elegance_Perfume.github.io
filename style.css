@@ -1093,3 +1093,27 @@ footer:not(.admin-footer) {
 .admin-nav {
    /* margin-right: 1rem; */ /* Add some space if needed */
 }
+/* Add this to style.css (outside any media queries) */
+.category-link-wrapper {
+    display: block; /* Make the link behave like a block */
+    text-decoration: none; /* Remove underline from the wrapper link */
+    color: inherit; /* Ensure it inherits text color, not default link color */
+}
+
+.category-link-wrapper:hover,
+.category-link-wrapper:focus {
+    text-decoration: none; /* Ensure no underline on hover/focus */
+    color: inherit;
+}
+
+/* Optional: Ensure focus outline appears correctly on the card */
+.category-link-wrapper:focus-visible .category-card {
+     outline: 2px solid var(--accent-secondary);
+     outline-offset: 2px;
+     box-shadow: 0 0 0 4px rgba(37, 117, 252, 0.2); /* Blue glow */
+}
+/* Remove default link focus outline if using the card outline */
+.category-link-wrapper:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
