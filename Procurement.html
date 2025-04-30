@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurement Dashboard - Elegance Perfume</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to the main CSS file -->
+     <!-- Internal styles specific to this page (can be moved to style.css later if preferred) -->
+    <style>
+        .procurement-page-body { /* Specific body class */
+             font-family: Arial, sans-serif;
+             margin: 0;
+             padding: 0;
+             background-color: #f9f9f9;
+             color: #333;
+        }
+        .procurement-header { /* Specific header class */
+             background-color: #101036; /* Using the color from your example */
+             color: white;
+             padding: 15px 20px;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+        }
+         .procurement-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: black;
+            font-family: 'Playfair Display', serif;
+        }
+         /* Use same header button styles as management.html */
+        .header-buttons { display: flex; gap: 1rem; }
+        .header-btn { color: black; text-decoration: none; padding: 8px 12px; border-radius: 4px; transition: background-color 0.2s ease; font-size: 0.9rem; }
+        .header-btn:hover { background-color: #0056b3; text-decoration: none; color:white ; }
+        .header-btn.active { background-color: #0056b3; font-weight: bold; color:white ; }
+
+         .procurement-section { /* Specific section class */
+             padding: 20px;
+             max-width: 1100px; /* Wider for tables */
+             margin: 2rem auto;
+             background-color: #fff;
+             border-radius: 8px;
+             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+             margin-bottom: 2rem; /* Space between sections */
+        }
+         .procurement-section h2 {
+             color: #101036;
+             margin-bottom: 20px;
+             font-family: 'Playfair Display', serif;
+             border-bottom: 1px solid #eee;
+             padding-bottom: 10px;
+        }
+         /* Table styling consistent with management page */
+         .procurement-table { /* Specific table class */
+             width: 100%;
+             border-collapse: collapse;
+             margin-bottom: 20px;
+             overflow-x: auto; /* Add horizontal scroll for tables */
+             display: block; /* Needed for overflow-x */
+        }
+         .procurement-table th, .procurement-table td {
+             border: 1px solid #ddd;
+             padding: 12px;
+             text-align: left;
+             white-space: nowrap; /* Prevent wrapping */
+        }
+         .procurement-table th {
+             background-color: #f1f1f1;
+             color: #333;
+             font-weight: 600;
+        }
+
+         /* Form styling */
+         .search-filter-form { /* Specific form class */
+             display: flex;
+             flex-wrap: wrap;
+             gap: 20px; /* Space between items */
+             align-items: flex-end; /* Align button nicely */
+             border: 1px solid #eee;
+             padding: 20px;
+             border-radius: 5px;
+             background-color: #fdfdfd;
+             margin-bottom: 20px;
+        }
+         .search-filter-form .form-group {
+             flex: 1; /* Allow groups to grow */
+             min-width: 200px; /* Minimum width */
+             margin-bottom: 0; /* Remove bottom margin */
+        }
+         .search-filter-form label {
+             display: block;
+             margin-bottom: 5px;
+             font-weight: 500;
+             color: #555;
+        }
+         .search-filter-form input {
+             width: 100%;
+             padding: 10px;
+             box-sizing: border-box;
+             border: 1px solid #ccc;
+             border-radius: 4px;
+        }
+         .search-filter-form input:focus {
+            border-color: #6A11CB;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.15);
+        }
+         .search-filter-form button {
+             background-color: #101036;
+             color: white;
+             border: none;
+             padding: 10px 20px;
+             cursor: pointer;
+             border-radius: 5px;
+             height: fit-content; /* Match input height approx */
+             line-height: 1.5; /* Adjust line height */
+             transition: background-color 0.2s ease;
+        }
+         .search-filter-form button:hover {
+             background-color: #0056b3;
+        }
+    </style>
+</head>
+<body class="procurement-page-body"> <!-- Added class -->
+    <header class="procurement-header"> <!-- Added class -->
+        <h1>Procurement Dashboard</h1>
+        <nav class="header-buttons">
+            <a href="admin.html" class="header-btn">Product Management</a> <!-- Link back -->
+            <a href="Procurement.html" class="header-btn active">Procurement</a> <!-- Mark active -->
+            <a href="management.html" class="header-btn">HR Management</a>
+             <a href="index.html" class="header-btn">View Main Site</a> <!-- Optional link back -->
+        </nav>
+    </header>
+
+<main>
+    <section id="search-filter" class="procurement-section"> <!-- Added class -->
+        <h2>Search and Filter Orders</h2>
+        <!-- Added preventDefault to avoid page reload -->
+        <form onsubmit="event.preventDefault(); handleSearch();" class="search-filter-form"> <!-- Added class -->
+            <div class="form-group">
+                <label for="search-supplier">Search by Supplier Name:</label>
+                <input type="text" id="search-supplier" name="search-supplier" placeholder="Enter supplier name">
+            </div>
+            <div class="form-group">
+                <label for="search-product">Search by Product Name:</label>
+                <input type="text" id="search-product" name="search-product" placeholder="Enter product name">
+            </div>
+             <div class="form-group">
+                <label for="filter-status">Filter by Status:</label>
+                 <select id="filter-status" name="filter-status">
+                     <option value="">All Statuses</option>
+                     <option value="Pending">Pending</option>
+                     <option value="Approved">Approved</option>
+                     <option value="Delivered">Delivered</option>
+                 </select>
+            </div>
+            <button type="submit">Search / Filter</button>
+        </form>
+    </section>
+
+    <section id="dashboard" class="procurement-section"> <!-- Added class -->
+        <h2>Current Procurement Orders</h2>
+        <table class="procurement-table"> <!-- Added class -->
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Supplier</th>
+                    <th>Product Ordered</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+            <tbody id="procurement-orders-body"> <!-- Added ID for JS targeting -->
+                <!-- Static Data - JS will replace this if filtering is implemented -->
+                <tr>
+                    <td>PRC1001</td>
+                    <td>Maison Francis Kurkdjian Supplier</td>
+                    <td>Baccarat Rouge 540</td>
+                    <td>50 units</td>
+                    <td>Pending</td>
+                    <td>2025-04-10</td>
+                </tr>
+                <tr>
+                    <td>PRC1002</td>
+                    <td>Creed Distributors</td>
+                    <td>Creed Aventus</td>
+                    <td>30 units</td>
+                    <td>Approved</td>
+                    <td>2025-04-12</td>
+                </tr>
+                <tr>
+                    <td>PRC1003</td>
+                    <td>Dior Wholesale</td>
+                    <td>Dior Sauvage Elixir</td>
+                    <td>100 units</td>
+                    <td>Delivered</td>
+                    <td>2025-04-15</td>
+                </tr>
+                <tr>
+                    <td>PRC1004</td>
+                    <td>Tom Ford Supply Co.</td>
+                    <td>Tom Ford Lost Cherry</td>
+                    <td>20 units</td>
+                    <td>Pending</td>
+                    <td>2025-04-17</td>
+                </tr>
+                <tr>
+                    <td>PRC1005</td>
+                    <td>Byredo Partners</td>
+                    <td>Byredo Mojave Ghost</td>
+                    <td>40 units</td>
+                    <td>Delivered</td>
+                    <td>2025-04-18</td>
+                </tr>
+                 <!-- Add more static orders if needed -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="manage-suppliers" class="procurement-section"> <!-- Added class -->
+        <h2>Supplier Management</h2>
+        <table class="procurement-table"> <!-- Added class -->
+            <thead>
+                <tr>
+                    <th>Supplier Name</th>
+                    <th>Contact Person</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Products Supplied</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <!-- Static Data -->
+                <tr>
+                    <td>Maison Francis Kurkdjian Supplier</td>
+                    <td>Jean Dupont</td>
+                    <td>+33 1 45 67 89 00</td>
+                    <td>info@mfksuppliers.com</td>
+                    <td>Baccarat Rouge 540</td>
+                </tr>
+                <tr>
+                    <td>Creed Distributors</td>
+                    <td>Emily Scott</td>
+                    <td>+44 20 7946 0958</td>
+                    <td>sales@creedperfume.com</td>
+                    <td>Creed Aventus, Silver Mountain Water</td>
+                </tr>
+                <tr>
+                    <td>Dior Wholesale</td>
+                    <td>Lucas Martin</td>
+                    <td>+33 1 48 99 56 23</td>
+                    <td>wholesale@dior.com</td>
+                    <td>Dior Sauvage Elixir, J'adore l'Or</td>
+                </tr>
+                <tr>
+                    <td>Tom Ford Supply Co.</td>
+                    <td>Clara Johnson</td>
+                    <td>+1 212 555 0134</td>
+                    <td>support@tomford.com</td>
+                    <td>Lost Cherry, Noir Extreme</td>
+                </tr>
+                <tr>
+                    <td>Byredo Partners</td>
+                    <td>Sofia Andersson</td>
+                    <td>+46 8 555 1234</td>
+                    <td>supply@byredo.com</td>
+                    <td>Mojave Ghost</td>
+                </tr>
+                 <!-- Add more static suppliers if needed -->
+            </tbody>
+        </table>
+    </section>
+</main>
+
+    <!-- Placeholder for Search/Filter JS -->
+    <script>
+        // Static data for procurement orders (used for filtering)
+        const procurementOrders = [
+            { orderId: "PRC1001", supplier: "Maison Francis Kurkdjian Supplier", product: "Baccarat Rouge 540", quantity: "50 units", status: "Pending", date: "2025-04-10" },
+            { orderId: "PRC1002", supplier: "Creed Distributors", product: "Creed Aventus", quantity: "30 units", status: "Approved", date: "2025-04-12" },
+            { orderId: "PRC1003", supplier: "Dior Wholesale", product: "Dior Sauvage Elixir", quantity: "100 units", status: "Delivered", date: "2025-04-15" },
+            { orderId: "PRC1004", supplier: "Tom Ford Supply Co.", product: "Tom Ford Lost Cherry", quantity: "20 units", status: "Pending", date: "2025-04-17" },
+            { orderId: "PRC1005", supplier: "Byredo Partners", product: "Byredo Mojave Ghost", quantity: "40 units", status: "Delivered", date: "2025-04-18" }
+        ];
+
+        function renderProcurementOrders(ordersToRender) {
+            const tableBody = document.getElementById('procurement-orders-body');
+            if (!tableBody) return;
+            tableBody.innerHTML = ''; // Clear existing
+
+             if(ordersToRender.length === 0) {
+                 tableBody.innerHTML = '<tr><td colspan="6">No orders match your criteria.</td></tr>';
+                 return;
+             }
+
+            ordersToRender.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.orderId}</td>
+                    <td>${order.supplier}</td>
+                    <td>${order.product}</td>
+                    <td>${order.quantity}</td>
+                    <td>${order.status}</td>
+                    <td>${order.date}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function handleSearch() {
+            const supplierSearch = document.getElementById('search-supplier').value.toLowerCase();
+            const productSearch = document.getElementById('search-product').value.toLowerCase();
+            const statusFilter = document.getElementById('filter-status').value;
+
+            const filteredOrders = procurementOrders.filter(order => {
+                const supplierMatch = !supplierSearch || order.supplier.toLowerCase().includes(supplierSearch);
+                const productMatch = !productSearch || order.product.toLowerCase().includes(productSearch);
+                const statusMatch = !statusFilter || order.status === statusFilter;
+                return supplierMatch && productMatch && statusMatch;
+            });
+
+            renderProcurementOrders(filteredOrders);
+        }
+
+        // Initial render on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProcurementOrders(procurementOrders); // Show all initially
+
+            // Optional: Add listener for real-time filtering on input change
+            // document.getElementById('search-supplier').addEventListener('input', handleSearch);
+            // document.getElementById('search-product').addEventListener('input', handleSearch);
+            // document.getElementById('filter-status').addEventListener('change', handleSearch);
+        });
+
+    </script>
+
+    <!-- Link main script file (optional, if needed for common functions later) -->
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

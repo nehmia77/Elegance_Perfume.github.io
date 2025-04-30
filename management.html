@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR Management Dashboard - Elegance Perfume</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link main stylesheet -->
+
+  <!-- Internal styles specific to this page (can be moved to style.css later if preferred) -->
+  <style>
+    /* HR Management Dashboard Styles - Kept Internal for now */
+    .hr-page-body { /* Specific body class */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333; /* Default text color for light bg */
+    }
+
+    .hr-header { /* Specific header class */
+      background-color: #101036; /* Using the color from your example */
+      color: white;
+      padding: 15px 20px; /* Adjusted padding */
+      display: flex; /* Use flex for layout */
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hr-header h1 {
+        margin: 0;
+        font-size: 1.8rem; /* Adjust size */
+        color: black; /* Ensure h1 is white */
+        font-family: 'Playfair Display', serif; /* Match main style */
+    }
+
+    .header-buttons { /* Style for the nav links in this header */
+        display: flex;
+        gap: 1rem;
+    }
+    .header-btn {
+        color: black;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+        font-size: 0.9rem;
+    }
+    .header-btn:hover {
+        background-color: #0056b3;
+        text-decoration: none;
+        color: white;
+    }
+    .header-btn.active { /* Style for active link */
+         background-color: #0056b3;
+         font-weight: bold;
+         color: white;
+    }
+
+    .hr-section { /* Specific section class */
+      padding: 20px;
+      max-width: 1000px; /* Limit width */
+      margin: 2rem auto; /* Center section */
+      background-color: #fff; /* White background for content */
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .hr-section h2 {
+      color: #101036;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .hr-table { /* Specific table class */
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .hr-table, .hr-table th, .hr-table td {
+      border: 1px solid #ddd;
+    }
+
+    .hr-table th, .hr-table td {
+      padding: 12px; /* Increased padding */
+      text-align: left;
+    }
+
+    .hr-table th {
+      background-color: #f1f1f1; /* Lighter header */
+      color: #333;
+      font-weight: 600;
+    }
+
+    .hr-table button.remove-btn { /* Style remove button */
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
+    .hr-table button.remove-btn:hover {
+      background-color: #cc0000;
+    }
+
+    .hr-form { /* Specific form class */
+       border: 1px solid #eee;
+       padding: 20px;
+       border-radius: 5px;
+       background-color: #fdfdfd;
+       margin-bottom: 30px;
+    }
+
+    .hr-form .form-group {
+      margin-bottom: 15px;
+    }
+
+    .hr-form .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .hr-form .form-group input {
+      width: 100%;
+      padding: 10px; /* Increased padding */
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .hr-form .form-group input:focus {
+        border-color: #6A11CB; /* Use main accent color */
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.15);
+    }
+
+
+    .hr-form button[type="submit"] { /* Style add button */
+      background-color: #101036;
+      color: white;
+      border: none;
+      padding: 10px 20px; /* Adjusted padding */
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .hr-form button[type="submit"]:hover {
+      background-color: #0056b3; /* Example hover color */
+    }
+
+  </style>
+</head>
+<body class="hr-page-body"> <!-- Added class -->
+  <header class="hr-header"> <!-- Added class -->
+    <h1>HR Management</h1>
+    <nav class="header-buttons">
+      <a href="admin.html" class="header-btn">Product Management</a> <!-- Link back -->
+      <a href="Procurement.html" class="header-btn">Procurement</a>
+      <a href="management.html" class="header-btn active">HR Management</a> <!-- Mark active -->
+      <a href="index.html" class="header-btn">View Main Site</a> <!-- Optional link back -->
+    </nav>
+  </header>
+
+<main>
+  <section class="hr-section"> <!-- Added class -->
+    <h2>Add New Team Member</h2>
+    <form id="add-user-form" class="hr-form"> <!-- Added class -->
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Enter full name" required>
+      </div>
+      <div class="form-group">
+        <label for="position">Position:</label>
+        <input type="text" id="position" placeholder="Enter position" required>
+      </div>
+      <div class="form-group">
+        <label for="id">ID Number:</label>
+        <input type="text" id="id" placeholder="Enter ID number" required>
+      </div>
+      <button type="submit">Add Member</button>
+    </form>
+
+    <h2>Current Team Members</h2>
+    <table class="hr-table"> <!-- Added class -->
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Position</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="employment-data">
+        <!-- Pre-loaded employment data will be dynamically added here -->
+      </tbody>
+    </table>
+  </section>
+</main>
+
+  <!-- Embedded JS from your code -->
+  <script>
+  // Pre-loaded employment data (kept in memory for this simple example)
+  let employmentData = [ // Use let to allow modification
+    { name: "Betaniya Mekbib", id: "UGR/9341/15", position: "HR Manager" },
+    { name: "Mihret Asfaw", id: "UGR/0803/15", position: "Procurement Manager" },
+    { name: "Nehmia Tewachew", id: "UGR/5357/15", position: "Software Engineer" },
+    { name: "Temesgen Kidane", id: "UGR/0686/15", position: "Data Analyst" },
+    { name: "Surafel Admassu Frehiwot", id: "UGR/4292/15", position: "Project Manager" },
+    { name: "Sofonias Getahun", id: "UGR/6876/15", position: "System Administrator" }
+  ];
+
+  // Render pre-loaded employment data
+  function renderEmploymentData() {
+    const employmentTable = document.getElementById("employment-data");
+    if (!employmentTable) return; // Exit if table not found
+    employmentTable.innerHTML = ""; // Clear existing rows
+    employmentData.forEach((employee, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${employee.name}</td>
+        <td>${employee.id}</td>
+        <td>${employee.position}</td>
+        <td><button onclick="removeMember(${index})" class="remove-btn">Remove</button></td>
+      `;
+      employmentTable.appendChild(row);
+    });
+  }
+
+  // Add new member functionality
+  function addMember(event) {
+    event.preventDefault();
+
+    const nameInput = document.getElementById("name");
+    const positionInput = document.getElementById("position");
+    const idInput = document.getElementById("id");
+
+    const name = nameInput.value.trim();
+    const position = positionInput.value.trim();
+    const id = idInput.value.trim();
+
+    if (!name || !position || !id) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // Check for duplicate ID (optional but good practice)
+    if (employmentData.some(emp => emp.id === id)) {
+        alert(`An employee with ID ${id} already exists.`);
+        return;
+    }
+
+    // Add new member to the employment data
+    employmentData.push({ name, id, position });
+
+    // Re-render the table
+    renderEmploymentData();
+
+    // Clear the form
+    document.getElementById("add-user-form").reset();
+  }
+
+  // Remove member functionality (make sure this is globally accessible)
+  window.removeMember = function(index) { // Assign to window scope explicitly
+    if (index >= 0 && index < employmentData.length) {
+        const memberName = employmentData[index].name;
+         if (confirm(`Are you sure you want to remove ${memberName}?`)) {
+            // Remove the member from the employment data
+            employmentData.splice(index, 1);
+             // Re-render the table
+             renderEmploymentData();
+        }
+    } else {
+        console.error("Invalid index for removeMember:", index);
+    }
+  }
+
+  // Initialize the page
+  document.addEventListener("DOMContentLoaded", function () {
+    renderEmploymentData();
+
+    const addUserForm = document.getElementById("add-user-form");
+     if(addUserForm) {
+         addUserForm.addEventListener("submit", addMember);
+     }
+  });
+</script>
+
+<!-- Link main script file (optional, if needed for common functions later) -->
+<!-- <script src="script.js"></script> -->
+
+</body>
+</html>
